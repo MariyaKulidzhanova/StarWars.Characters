@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StarWars.Characters.Data;
 
@@ -10,9 +11,11 @@ using StarWars.Characters.Data;
 namespace StarWars.Characters.Migrations
 {
     [DbContext(typeof(StarWarsCharactersContext))]
-    partial class StarWarsCharactersContextModelSnapshot : ModelSnapshot
+    [Migration("20230621132402_Movies")]
+    partial class Movies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

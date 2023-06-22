@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PagedList;
 using StarWars.Characters.Data;
 using StarWars.Characters.Models;
 
@@ -29,14 +30,20 @@ namespace StarWars.Characters.Controllers
 
             var characters = from c in _context.Character
                          select c;
+            var characterVMList = new List<CharacterVM>();
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 characters = characters.Where(s => s.Name!.Contains(searchString) || s.Planet!.Contains(searchString) || s.Description!.Contains(searchString));
             }
 
+
+            foreach (var character in characters)
+                characterVMList.Add(new CharacterVM(character));
+
+
             int pageSize = 3;
-            return View(await PaginatedList<Character>.CreateAsync(characters.AsNoTracking(), pageNumber ?? 1, pageSize));
+            return View(characterVMList.ToPagedList(pageNumber ?? 1, pageSize));
         }
 
         // GET: Characters/Details/5
@@ -54,7 +61,7 @@ namespace StarWars.Characters.Controllers
                 return NotFound();
             }
 
-            return View(character);
+            return View(new CharacterVM(character));
         }
 
         // GET: Characters/Create
@@ -66,15 +73,16 @@ namespace StarWars.Characters.Controllers
         // POST: Characters/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,BirthDate,Planet,Gender,Race,Height,HairColor,EyeColor,Description")] Character character)
+        public async Task<IActionResult> Create([Bind("Id,Name,BirthDate,Planet,Gender,Race,Height,HairColor,EyeColor,Description,Movies")] Character character)
         {
             if (ModelState.IsValid)
             {
+                //
                 _context.Add(character);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(character);
+            return View(new CharacterVM(character));
         }
 
         // GET: Characters/Edit/5
@@ -90,13 +98,13 @@ namespace StarWars.Characters.Controllers
             {
                 return NotFound();
             }
-            return View(character);
+            return View(new CharacterVM(character));
         }
 
         // POST: Characters/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,BirthDate,Planet,Gender,Race,Height,HairColor,EyeColor,Description")] Character character)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,BirthDate,Planet,Gender,Race,Height,HairColor,EyeColor,Description,Movies")] Character character)
         {
             if (id != character.Id)
             {
@@ -123,7 +131,7 @@ namespace StarWars.Characters.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(character);
+            return View(new CharacterVM(character));
         }
 
         // GET: Characters/Delete/5
@@ -141,7 +149,7 @@ namespace StarWars.Characters.Controllers
                 return NotFound();
             }
 
-            return View(character);
+            return View(new CharacterVM(character));
         }
 
         // POST: Characters/Delete/5

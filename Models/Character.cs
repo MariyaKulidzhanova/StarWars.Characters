@@ -14,5 +14,5 @@ public class Character
     public string? HairColor { get; set; }
     public string? EyeColor { get; set; }
     public string? Description { get; set; }
-    //add chapters as a string and use split maybe??
+    public string? Movies { get; set; }
 }

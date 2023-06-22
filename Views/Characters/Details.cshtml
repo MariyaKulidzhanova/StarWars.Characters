@@ -1,4 +1,4 @@
-﻿@model StarWars.Characters.Models.Character
+﻿@model StarWars.Characters.Models.CharacterVM
 
 @{
     ViewData["Title"] = "Details";
@@ -63,6 +63,18 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movies)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var movie in Model!.Movies!)
+            {
+                <div>
+                    @movie
+                    <hr />
+                </div>
+            }
         </dd>
     </dl>
 </div>

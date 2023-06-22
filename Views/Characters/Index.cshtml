@@ -1,4 +1,4 @@
-﻿@model PaginatedList<StarWars.Characters.Models.Character>
+﻿@model IPagedList<StarWars.Characters.Models.CharacterVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -47,7 +47,9 @@
             <th>
                 Description
             </th>
-            <th></th>
+            <th>
+                Movies
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -81,6 +83,15 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
+                @foreach (var movie in item!.Movies!)
+                {
+                    <div>
+                        @movie
+                        <hr />
+                    </div>
+                }
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
@@ -96,13 +107,13 @@
 }
 
 <a asp-action="Index"
-   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-pageNumber="@(Model.PageNumber - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
 <a asp-action="Index"
-   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-pageNumber="@(Model.PageNumber + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-default @nextDisabled">
     Next
