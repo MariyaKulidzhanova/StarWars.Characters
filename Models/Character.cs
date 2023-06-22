@@ -10,7 +10,7 @@ public class Character
     public string? Planet { get; set; }
     public Gender Gender { get; set; }
     public string? Race { get; set; }
-    public decimal Height { get; set; }
+    public int Height { get; set; }
     public string? HairColor { get; set; }
     public string? EyeColor { get; set; }
     public string? Description { get; set; }
