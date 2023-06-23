@@ -9,6 +9,7 @@ namespace StarWars.Characters.Models
         {
             Id = character.Id;
             Name = character.Name;
+            ImageUrl = character.ImageUrl;
             BirthDate = character.BirthDate;
             Planet = character.Planet;
             Gender = character.Gender;
@@ -22,6 +23,7 @@ namespace StarWars.Characters.Models
 
         public int Id { get; set; }
         public string? Name { get; set; }
+        public string? ImageUrl { get; set; }
         public string? BirthDate { get; set; }
         public string? Planet { get; set; }
         public Gender Gender { get; set; }

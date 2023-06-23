@@ -21,6 +21,7 @@ public class SeedData
                 new Character
                 {
                     Name = "Энакин Скайуокер",
+                    ImageUrl = "https://www.soyuz.ru/public/uploads/files/2/7474247/2021102310033593a6758a3d.jpg",
                     BirthDate = "41 ДБЯ",
                     Planet = "Татуин",
                     Gender = Gender.Male,
@@ -34,6 +35,7 @@ public class SeedData
                 new Character
                 {
                     Name = "Палпатин",
+                    ImageUrl = "https://cdn.shazoo.ru/400632_32tqaXgqh3_palpatine.jpg",
                     BirthDate = "82 ДБЯ",
                     Planet = "Набу",
                     Gender = Gender.Male,
@@ -47,6 +49,7 @@ public class SeedData
                 new Character
                 {
                     Name = "Бен Соло (Кайло Рен)",
+                    ImageUrl = "https://editors.dexerto.com/wp-content/uploads/2020/08/kylo-ren-ben-solo-to-lead-next-star-wars-spinoff-series-animated-disney-show.jpg",
                     BirthDate = "5 ПБЯ",
                     Planet = "Чандрила",
                     Gender = Gender.Male,
@@ -60,6 +63,7 @@ public class SeedData
                 new Character
                 {
                     Name = "Лея Органа",
+                    ImageUrl = "https://kinoreporter.ru/wp-content/uploads/2020/06/white12-1024x576.jpg?x85068",
                     BirthDate = "19 ДБЯ",
                     Planet = "Альдераан",
                     Gender = Gender.Female,
@@ -73,6 +77,7 @@ public class SeedData
                 new Character
                 {
                     Name = "Джа-Джа Бинкс",
+                    ImageUrl = "https://www.mirf.ru/wp-content/uploads/2015/11/51e12a12e07f17c8109379b5e7ec7c45.jpg",
                     BirthDate = "52 ДБЯ",
                     Planet = "Набу",
                     Gender = Gender.Male,

@@ -73,7 +73,7 @@ namespace StarWars.Characters.Controllers
         // POST: Characters/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,BirthDate,Planet,Gender,Race,Height,HairColor,EyeColor,Description,Movies")] Character character)
+        public async Task<IActionResult> Create([Bind("Id,Name,ImageUrl,BirthDate,Planet,Gender,Race,Height,HairColor,EyeColor,Description,Movies")] Character character)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace StarWars.Characters.Controllers
         // POST: Characters/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,BirthDate,Planet,Gender,Race,Height,HairColor,EyeColor,Description,Movies")] Character character)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ImageUrl,BirthDate,Planet,Gender,Race,Height,HairColor,EyeColor,Description,Movies")] Character character)
         {
             if (id != character.Id)
             {
