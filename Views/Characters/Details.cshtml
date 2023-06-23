@@ -1,71 +1,87 @@
 ﻿@model StarWars.Characters.Models.CharacterVM
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Подробнее";
 }
+<style>
+    h1{
+        color:white;
+    }
+    
+    a{
+        color: white;
+        text-decoration: none;
+    }
 
-<h1>Details</h1>
+    a:hover {
+        color: red;
+        text-decoration: none;
+    }
 
-<div>
-    <h4>Character</h4>
-    <hr />
-    <dl class="row">
+    .myIcon {
+        height: 30px;
+        width: 30px;
+    }
+
+    ::-webkit-input-placeholder {
+        font-style: italic;
+    }
+</style>
+
+
+<div class="container">
+    <h1 class="mb-5"><strong>@Model.Name</strong></h1>
+    <dl class="row text-white">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
+            Дата рождения
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BirthDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Planet)
+            Планета
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Planet)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
+            Пол
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Gender)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Race)
+            Раса
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Race)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Height)
+            Рост
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Height)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HairColor)
+            Цвет волос
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.HairColor)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EyeColor)
+            Цвет глаз
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EyeColor)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            Описание
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movies)
+            Фильмы
         </dt>
         <dd class="col-sm-10">
             @foreach (var movie in Model!.Movies!)
@@ -77,8 +93,9 @@
             }
         </dd>
     </dl>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-light">Редактировать</a>
+        <a asp-action="Index" class="btn btn-outline-light">Назад к списку</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

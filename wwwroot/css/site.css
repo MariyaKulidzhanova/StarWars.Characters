@@ -1,4 +1,5 @@
 html {
+ 
   font-size: 14px;
 }
 
@@ -29,4 +30,12 @@ body {
 .navbar {
     background-color: #919993 !important;
     border-block-color: #919993 !important;
+}
+
+a{
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration: none;
 }

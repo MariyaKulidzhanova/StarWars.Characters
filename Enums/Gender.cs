@@ -1,7 +1,11 @@
-﻿namespace StarWars.Characters.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StarWars.Characters.Enums;
 
 public enum Gender
 {
-    Male, 
+    [Display(Name="Мужской")]
+    Male,
+    [Display(Name="Женский")]
     Female
 }

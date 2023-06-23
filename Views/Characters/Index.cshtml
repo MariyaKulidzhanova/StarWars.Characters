@@ -1,105 +1,133 @@
 ﻿@model IPagedList<StarWars.Characters.Models.CharacterVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Каталог";
 }
 
-<h1>Index</h1>
+<style>
+    a{
+        color:white;
+        text-decoration:none;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    a:hover {
+        color: red;
+        text-decoration: none;
+    }
 
-<form asp-controller="Characters" asp-action="Index" method="get">
-    <p>
-        Title: <input type="text" name="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
+    .myIcon {
+        height: 30px;
+        width: 30px;
+    }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Birth Date
-            </th>
-            <th>
-                Planet
-            </th>
-            <th>
-                Gender
-            </th>
-            <th>
-                Race
-            </th>
-            <th>
-                Height
-            </th>
-            <th>
-                Hair Color
-            </th>
-            <th>
-                Eye Color
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Movies
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Planet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Race)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Height)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HairColor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EyeColor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @foreach (var movie in item!.Movies!)
-                {
-                    <div>
-                        @movie
-                        <hr />
+    ::-webkit-input-placeholder {
+        font-style: italic;
+    }
+</style>
+
+<div class="container-fluid mt-4">
+    <div class="row mb-2">
+        <div class="col-6">
+            <p style="margin-left:100px;">
+                <a asp-action="Create"><img src="~/Images/add-icon.png" class="myIcon" alt="Создать" title="Добавить персонажа" /></a>
+            </p>
+        </div>
+        <div class="col-6">
+            <form asp-controller="Characters" asp-action="Index" method="get" class="float-right mr-4">
+                <div class="form-actions no-color">
+                    <div class="input-group" style="width:300px">
+                        <input type="text" name="SearchString" class="form-control" placeholder="Поиск"/>
+                        <div class="input-group-append">
+                            <button class="btn btn-danger" type="submit" title="Поиск">
+                                <img src="~/Images/zoom.png" style="max-height:18px;max-width:20px" />
+                            </button>
+                        </div>
                     </div>
-                }
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <table class="table mt-5 text-white">
+        <thead>
+            <tr>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    Дата рождения
+                </th>
+                <th>
+                    Планета
+                </th>
+                <th>
+                    Пол
+                </th>
+                <th>
+                    Раса
+                </th>
+                <th>
+                    Рост
+                </th>
+                <th>
+                    Цвет волос
+                </th>
+                <th>
+                    Цвет глаз
+                </th>
+                <th>
+                    Описание
+                </th>
+                <th>
+                    Фильмы
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirthDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Planet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Race)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Height)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HairColor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EyeColor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id"><strong>Нажмите, чтобы увидеть полностью</strong></a>
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/Images/pencil-icon.png" class="myIcon" alt="Редактировать" title="Редактировать" /></a>
+                        <a asp-action="Details" asp-route-id="@item.Id"><img src="~/Images/details-icon.png" class="myIcon" alt="Подробнее" title="Подробнее" /></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>
 
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
@@ -109,12 +137,12 @@
 <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageNumber - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-default @prevDisabled">
-    Previous
+   class="btn btn-default btn-light @prevDisabled">
+    Назад
 </a>
 <a asp-action="Index"
    asp-route-pageNumber="@(Model.PageNumber + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-default @nextDisabled">
-    Next
+   class="btn btn-default btn-light @nextDisabled">
+    Вперед
 </a>
