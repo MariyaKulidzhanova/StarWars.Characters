@@ -13,6 +13,8 @@ public class SeedData
             serviceProvider.GetRequiredService<
                 DbContextOptions<StarWarsCharactersContext>>()))
         {
+            context.Database.Migrate();
+
             if (context.Character.Any())
             {
                 return;

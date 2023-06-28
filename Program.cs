@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using StarWars.Characters.Data;
 using StarWars.Characters.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<StarWarsCharactersContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("StarWarsCharactersContext") ?? throw new InvalidOperationException("Connection string 'StarWarsCharactersContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("StarWarsCharactersContext")));
 
 builder.Services.AddControllersWithViews();
 
